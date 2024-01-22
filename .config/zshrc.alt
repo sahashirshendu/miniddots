@@ -1,0 +1,80 @@
+# Options
+setopt prompt_subst
+setopt correct
+setopt appendhistory
+setopt inc_append_history
+setopt histignorealldups
+setopt autocd
+
+# Prompt
+autoload -U colors vcs_info
+colors && precmd() { vcs_info }
+PROMPT='%F{cyan}%~%f ${vcs_info_msg_0_}❯ '
+
+# VCS Info Format
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' formats       '%F{5}[%F{2}%b%F{5}] %c%u%f'
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%a%F{5}] %c%u%f '
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
++vi-git-untracked() {
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+  [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
+  hook_com[unstaged]+='?'
+fi
+}
+
+# Completion
+autoload -U compinit
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' rehash true
+zmodload zsh/complist
+compinit -d
+
+HISTSIZE=10000
+SAVEHIST=10000
+WORDCHARS=${WORDCHARS//\/[&.;]}  # Don't consider certain characters part of the word
+
+# Plugins
+source /usr/share/zplug/init.zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
+
+# Keybindings
+bindkey -e                                         # Emacs Keybindings
+bindkey '^[[H' beginning-of-line                   # Home key
+bindkey '^[[F' end-of-line                         # End key
+bindkey '^[[3~' delete-char                        # Delete key
+bindkey '^[[5~' history-beginning-search-backward  # Page up key
+bindkey '^[[6~' history-beginning-search-forward   # Page down key
+bindkey '^[[A' history-substring-search-up  		   # Substring search up
+bindkey '^[[B' history-substring-search-down  		 # Substring search down
+bindkey '^[[1;5C' forward-word                     # Next Word
+bindkey '^[[1;5D' backward-word                    # Previous Word
+bindkey '^H' backward-kill-word                    # delete previous word with ctrl+backspace
+bindkey '^[[Z' undo                                # Shift+tab undo last action
+
+# Path
+export PATH="$HOME/.local/bin:$PATH"
+
+# Aliases
+
+alias mkdir='mkdir -p'
+alias cat="batcat -pp"
+alias upd='sudo pkcon refresh && sudo pkcon update'
+alias python='python3'
+alias st='subl'
+
+alias ls='lsd'
+alias ll="lsd -l"
+alias la="lsd -lA"

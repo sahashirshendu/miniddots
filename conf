@@ -4,7 +4,7 @@
 sudo apt install build-essentials python3-pip gfortran gnuplot
 
 # better stuff
-sudo apt install bat zsh
+sudo apt install bat zsh zplug
 
 # lsd as a replacement to ls
 wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd-musl_0.22.0_amd64.deb && sudo dpkg -i lsd_0.22.0_amd64.deb
