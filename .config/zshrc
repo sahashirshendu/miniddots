@@ -20,26 +20,11 @@ HISTSIZE=10000
 SAVEHIST=10000
 WORDCHARS=${WORDCHARS//\/[&.;]}
 
-# Plugins
-source /usr/share/zplug/init.zsh
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
-if ! zplug check --verbose; then
-  echo; zplug install
-fi
-zplug load
-
 # Keybindings
 bindkey -e
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey '^[[3~' delete-char
-bindkey '^[[5~' history-beginning-search-backward
-bindkey '^[[6~' history-beginning-search-forward
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^H' backward-kill-word
