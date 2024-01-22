@@ -8,19 +8,16 @@ Some terminal configurations using KDE Plasma.
 
 ## Instructions for Installation-
 1. Clone the repo: 
-
 ```bash
 git clone https://gitlab.com/shirshendusaha/miniddots.git
 ```
 
 2. Go to the directory: 
-
 ```bash
 cd miniddots
 ```
 
 3. Execute the script:
-
 ```bash
-./conf.sh
+./conf
 ```
