@@ -54,8 +54,6 @@ alias mkdir='mkdir -p'
 alias cat="batcat -pp"
 alias upd='sudo pkcon refresh && sudo pkcon update'
 alias python='python3'
-alias st='subl'
-
 alias ls='lsd'
 alias ll="lsd -l"
 alias la="lsd -lA"

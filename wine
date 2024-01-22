@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Wine for running Windows Programs
+# WINE for running Windows Programs
 printf "\e[1;32mInstall Wine for running Windows programs inside Linux? [yes/no]\e[0m\n"
 read winepr
 if [[ $winepr = yes ]]; then
