@@ -7,18 +7,7 @@ sudo apt install build-essentials python3-pip gfortran gnuplot
 sudo apt install bat zsh zplug
 
 # lsd as a replacement to ls
-wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd-musl_0.22.0_amd64.deb && sudo dpkg -i lsd_0.22.0_amd64.deb
-
-# youtube-dl
-printf "\e[1;32mInstall youtube-dl? [yes/no]\e[0m\n"
-read ytpr
-if [[ $ytpr = yes ]]; then
-  sudo apt install youtube-dl
-  echo -e "" >> ~/.config/fish/config.fish
-  echo -e "# youtube-dl" >> ~/.config/fish/config.fish
-  echo -e "alias ytv='youtube-dl -f bestvideo+bestaudio'" >> ~/.config/fish/config.fish
-  echo -e "alias yta='youtube-dl --extract-audio --audio-format mp3'" >> ~/.config/fish/config.fish
-fi
+wget https://github.com/lsd-rs/lsd/releases/download/v1.0.0/lsd-musl_1.0.0_amd64.deb && sudo dpkg -i lsd-musl_1.0.0_amd64.deb
 
 # terminal and shell
 sudo apt install kitty
