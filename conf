@@ -1,9 +1,31 @@
 #!/bin/bash
 
-# Ncessary Programs
+# necessary programs
 sudo apt install build-essentials python3-pip gfortran gnuplot
 
-# Wine for running Windows Programs
+# better stuff
+sudo apt install bat zsh
+
+# lsd as a replacement to ls
+wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd-musl_0.22.0_amd64.deb && sudo dpkg -i lsd_0.22.0_amd64.deb
+
+# youtube-dl
+printf "\e[1;32mInstall youtube-dl? [yes/no]\e[0m\n"
+read ytpr
+if [[ $ytpr = yes ]]; then
+  sudo apt install youtube-dl
+  echo -e "" >> ~/.config/fish/config.fish
+  echo -e "# youtube-dl" >> ~/.config/fish/config.fish
+  echo -e "alias ytv='youtube-dl -f bestvideo+bestaudio'" >> ~/.config/fish/config.fish
+  echo -e "alias yta='youtube-dl --extract-audio --audio-format mp3'" >> ~/.config/fish/config.fish
+fi
+
+# terminal and shell
+sudo apt install kitty
+cp -r .config/kitty ~/.config/
+cp -r .config/zshrc ~/.zshrc
+
+# WINE for running Windows Programs
 printf "\e[1;32mInstall Wine for running Windows programs inside Linux? [yes/no]\e[0m\n"
 read winepr
 if [[ $winepr = yes ]]; then
@@ -19,35 +41,3 @@ if [[ $winepr = yes ]]; then
 		wine LTspice64.exe
 	fi
 fi
-
-# Some ricing :)
-sudo apt install bat fish fonts-cascadia-code
-
-# lsd as a replacement to ls
-wget https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd-musl_0.22.0_amd64.deb && sudo dpkg -i lsd_0.22.0_amd64.deb
-
-# Starship prompt
-wget https://starship.rs/install.sh && chmod +x install.sh && ./install.sh
-
-# Fish Shell Config
-mkdir -pv ~/.config/fish && cp .config/config.fish ~/.config/fish/ && cp .config/fish_variables ~/.config/fish/
-
-# Starship Config
-cp .config/starship.toml ~/.config/
-
-# youtube-dl
-printf "\e[1;32mInstall youtube-dl? [yes/no]\e[0m\n"
-read ytpr
-if [[ $ytpr = yes ]]; then
-  sudo apt install youtube-dl
-  echo -e "" >> ~/.config/fish/config.fish
-  echo -e "# youtube-dl" >> ~/.config/fish/config.fish
-  echo -e "alias ytv='youtube-dl -f bestvideo+bestaudio'" >> ~/.config/fish/config.fish
-  echo -e "alias yta='youtube-dl --extract-audio --audio-format mp3'" >> ~/.config/fish/config.fish
-fi
-
-# Konsole Profile
-cp .config/Konsole.profile ~/.local/share/konsole/
-cp .config/konsolerc ~/.config/
-
-printf "\e[1;32mAfter executing the script, relaunch Konsole. \e[0m\n"

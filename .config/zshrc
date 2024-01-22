@@ -1,16 +1,13 @@
-export PATH='$HOME/.local/bin:$PATH'
+export PATH="$HOME/.local/bin:$PATH"
 
 # Aliases
 
-alias mkdir='mkdir -pv' # mkdir to create parent directories
-
+alias mkdir='mkdir -p'
 alias cat="batcat -pp"
-
 alias upd='sudo pkcon refresh && sudo pkcon update'
 alias python='python3'
 alias st='subl'
 
-# lsd as a replacement to ls
 alias ls='lsd'
 alias ll="lsd -l"
 alias la="lsd -lA"
