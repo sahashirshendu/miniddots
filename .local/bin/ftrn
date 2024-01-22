@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case "$1" in
+    *.f90) f95 $1 && ./a.out && rm a.out ;;
+    *.f) f77 $1 && ./a.out && rm a.out ;;
+esac

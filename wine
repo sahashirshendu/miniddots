@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Wine for running Windows Programs
+printf "\e[1;32mInstall Wine for running Windows programs inside Linux? [yes/no]\e[0m\n"
+read winepr
+if [[ $winepr = yes ]]; then
+	sudo dpkg --add-architecture i386
+	sudo apt update
+	sudo apt install wine wine64 wine32
+
+	printf "\e[1;32mInstall LTSpice? [yes/no]\e[0m\n"
+	read ltspr
+	if [[ $ltspr = yes]]; then
+		# Setup LTSpice
+		wget https://ltspice.analog.com/software/LTspice64.exe
+		wine LTspice64.exe
+	fi
+fi
