@@ -7,7 +7,7 @@ setopt autocd
 
 # Prompt
 autoload -U colors && colors
-PROMPT='%F{cyan}%~%f$ '
+PROMPT='%F{green}%~%f$ '
 
 # Completion
 autoload -U compinit
