@@ -13,3 +13,4 @@ wget https://github.com/lsd-rs/lsd/releases/download/v1.0.0/lsd-musl_1.0.0_amd64
 sudo apt install kitty
 cp -r .config/kitty ~/.config/
 cp -r .config/zshrc ~/.zshrc
+mkdir -p ~/.local/bin && cp .local/bin/ftrn ~/.local/bin/
